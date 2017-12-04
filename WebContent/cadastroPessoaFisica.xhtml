@@ -1,0 +1,126 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="template.xhtml">
+
+	<ui:define name="title">Cadastro</ui:define>
+
+	<ui:define name="conteudo">
+
+		<h1 align="center">
+			<font color="Silver"><i>Bonnie e Clyde Locadora</i></font>
+		</h1>
+
+		<form jsf:id="form">
+
+			<h:messages></h:messages>
+			<div class="container">
+
+				
+			</div>
+			<div class="row">
+				<div class="col-md-6 mb-3">
+					<label for="validationDefault01" class="text-white">Nome</label> <input
+						jsf:id="Nome" jsf:value="#{mBeanCPF.nome}" type="text"
+						class="form-control" id="validationDefault01" placeholder="Nome" />
+				</div>
+				<div class="col-md-6 mb-3">
+					<label for="validationDefault02" class="text-white">Sobrenome</label>
+					<input jsf:id="Sobrenome" jsf:value="#{mBeanCPF.sobrenome}"
+						type="text" class="form-control" id="validationDefault02"
+						placeholder="Last name" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 mb-3">
+					<label for="validationDefault01" class="text-white">E-mail</label> <input
+						jsf:id="email" jsf:value="#{mBeanCPF.email}" type="text"
+						class="form-control" id="validationDefault01" placeholder="email@example.com" />
+				</div>
+				<div class="col-md-6 mb-3">
+					<label for="validationDefault02" class="text-white">Senha</label>
+					<input jsf:id="Senha" jsf:value="#{mBeanCPF.senha}"
+						type="password" class="form-control" id="validationDefault02"
+						placeholder="" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 mb-3">
+					<label for="validationDefault03" class="text-white">Cidade</label>
+					<input jsf:id="Cidade" jsf:value="#{mBeanCPF.cidade}" type="text"
+						class="form-control" id="validationDefault03" placeholder="Cidade" />
+					<div class="invalid-feedback">Please provide a valid city.</div>
+				</div>
+				<div class="col-md-3 mb-3">
+					<label for="validationDefault04" class="text-white">Estado</label>
+					<input jsf:id="Estado" jsf:value="#{mBeanCPF.estado}" type="text"
+						class="form-control" id="validationDefault04" placeholder="Estado" />
+					<div class="invalid-feedback">Please provide a valid state.</div>
+				</div>
+				<div class="col-md-3 mb-3">
+					<label for="validationDefault05" class="text-white">CEP</label> <input
+						jsf:id="CEP" jsf:value="#{mBeanCPF.cep}" type="text"
+						class="form-control" name="cepin" id="cepin" placeholder="CEP" />
+					<div class="invalid-feedback">Please provide a valid CEP.</div>
+				</div>
+				<div class="col-md-3 mb-3">
+					<label for="validationDefault05" class="text-white">CPF</label> <input
+						jsf:id="CPF" jsf:value="#{mBeanCPF.cpf}" type="text"
+						class="form-control" name="cpfin" id="cpfin" placeholder="CPF" />
+					<div class="invalid-feedback">Please provide a valid CPF.</div>
+				</div>
+			</div>
+
+			<input jsf:id="btnSalvar" jsf:action="#{mBeanCPF.Salvar}"
+				class="btn btn-primary" type="submit" value="Salvar" />
+
+		</form>
+
+		<form jsf:id="formList" method="post">
+
+			<table class="table">
+				<tr>
+					<th class="text-white">ID</th>
+					<th class="text-white">Nome</th>
+					<th class="text-white">Sobrenome</th>
+					<th class="text-white">CPF</th>
+				</tr>
+
+				<ui:repeat var="cliente" value="#{mBeanCPF.clientes}">
+					<tr>
+						<td class="text-white">#{cliente.id}</td>
+						<td class="text-white">#{cliente.nome}</td>
+						<td class="text-white">#{cliente.sobrenome}</td>
+						<td class="text-white">#{cliente.cpf}</td>
+						<td><input type="submit" jsf:id="btnAlterar"
+							jsf:action="#{mBeanCPF.alterar(cliente)}" value="Alterar"
+							class="btn btn-primary"> </input></td>
+						<td><input type="submit" jsf:id="btnExcluir"
+							jsf:action="#{mBeanCPF.excluir(cliente)}" value="Excluir"
+							class="btn btn-primary"> </input></td>
+					</tr>
+				</ui:repeat>
+
+			</table>
+
+		</form>
+
+	</ui:define>
+
+	<ui:define name="script">
+
+		<script>
+			$('#cpfin').mask('000.000.000-00');
+			$('#cpfout').mask('000.000.000-00');
+			$('#cepin').mask('00.000-000');
+		</script>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

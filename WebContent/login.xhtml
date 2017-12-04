@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="template.xhtml">
+
+	<ui:define name="title">Login</ui:define>
+
+	<ui:define name="conteudo">
+
+		<form jsf:id="form" method="post">
+
+
+			<div style="width: 50%; margin: 0 auto;">
+				<h:messages styleClass="alert alert-danger"></h:messages>
+
+				<h2 class="form-signin-heading">Login</h2>
+				<label for="email" class="sr-only">E-mail</label> <input
+					type="email" jsf:id="email" jsf:value="#{mBeanCPF.email}"
+					class="form-control" placeholder="E-mail" /> <label for="senha"
+					class="sr-only">Senha</label> <input type="password" jsf:id="senha"
+					jsf:value="#{mBeanCPF.senha}" class="form-control" /> <input
+					type="submit" jsf:id="logar" jsf:action="#{mBeanCPF.login}"
+					class="btn btn-lg btn-primary btn-block" value="Logar" />
+
+			</div>
+
+		</form>
+
+
+
+	</ui:define>
+
+	<ui:define name="script">
+
+		<script>
+		
+		</script>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

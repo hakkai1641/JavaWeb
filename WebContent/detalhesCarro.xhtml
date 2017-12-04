@@ -1,0 +1,55 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="template.xhtml">
+
+	<ui:define name="title">Detalhes do Veículo</ui:define>
+
+	<ui:define name="conteudo">
+
+		<body background="120949-free-road-wallpaper-1920x1080.jpg"></body>
+
+		<form jsf:id="form">
+			<input type="hidden" jsf:id="id" jsf:value="#{mBeanCar.id}" />
+
+			<div style="width: 50%; float: left;">
+				<h:graphicImage value="ServletImagem?id=#{mBeanCar.id}" width="60%"
+					height="60%"></h:graphicImage>
+			</div>
+
+			<div style="width: 50%; float: left;">
+				<p>
+					Código:
+					<h:outputText value="#{mBeanCar.id}"></h:outputText>
+				</p>
+
+				<p>
+					Marca:
+					<h:outputText value="#{mBeanCar.modelo}"></h:outputText>
+				</p>
+
+				<input type="submit" jsf:id="detalhesCarro"
+					jsf:action="#{mBeanCarrinho.adicionar(mBeanCar.id)}"
+					value="Adicionar ao Carrinho" class="btn btn-primary"></input>
+			</div>
+
+			<div style="width: 100%; float: left;">
+				<h:outputText value="#{carro.modelo}"></h:outputText>
+			</div>
+		</form>
+	</ui:define>
+
+	<ui:define name="script">
+
+		<script>
+			
+		</script>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>
